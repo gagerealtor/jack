@@ -1,115 +1,305 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Jack Family Story — Mary Jack Family Reunion</title>
+<meta name="description" content="The heritage and reunion site for the Mary &amp; Willie Jack family of St. Martinsville, Louisiana — family tree, memories, traditions, and reunion plans in Houston, TX.">
+<meta name="theme-color" content="#1D9E75">
+<!-- Open Graph: makes the link look good when shared in family group chats -->
+<meta property="og:title" content="The Jack Family Story">
+<meta property="og:description" content="Heritage &amp; reunion site for the Mary &amp; Willie Jack family. Founded 1931 · Reuniting in Houston, TX.">
+<meta property="og:type" content="website">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans, sans-serif); padding: 0.5rem; }
-.hero { background: var(--color-background-secondary, #f5f5f2); border: 0.5px solid var(--color-border-tertiary, #e0e0da); border-radius: 12px; padding: 2rem 1.5rem 1.75rem; text-align: center; margin-bottom: 1.25rem; }
-.hero-badge { background: #E1F5EE; color: #085041; font-size: 11px; padding: 3px 12px; border-radius: 20px; display: inline-block; margin-bottom: 0.85rem; font-weight: 500; }
-.hero h1 { font-size: 24px; font-weight: 500; color: var(--color-text-primary, #111); margin-bottom: 0.3rem; }
-.hero p { font-size: 13px; color: var(--color-text-secondary, #666); margin-bottom: 1.25rem; }
-.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 380px; margin: 0 auto; }
-.stat-card { background: var(--color-background-primary, #fff); border: 0.5px solid var(--color-border-tertiary, #e0e0da); border-radius: 8px; padding: 0.65rem; }
-.stat-num { font-size: 22px; font-weight: 500; color: var(--color-text-primary, #111); }
-.stat-lbl { font-size: 11px; color: var(--color-text-secondary, #666); margin-top: 1px; }
-.section-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary, #666); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
-.nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 1.25rem; }
-.nav-card { background: var(--color-background-primary, #fff); border: 0.5px solid var(--color-border-tertiary, #e0e0da); border-radius: 12px; padding: 0.85rem; cursor: pointer; text-align: left; }
-.nav-card.active { border: 1.5px solid #1D9E75; }
-.nav-icon { font-size: 18px; color: #1D9E75; margin-bottom: 0.4rem; }
-.nav-card h3 { font-size: 12px; font-weight: 500; color: var(--color-text-primary, #111); margin-bottom: 1px; }
-.nav-card p { font-size: 10px; color: var(--color-text-secondary, #666); line-height: 1.4; }
-.panel { display: none; background: var(--color-background-primary, #fff); border: 0.5px solid var(--color-border-tertiary, #e0e0da); border-radius: 12px; padding: 1.25rem; }
-.panel.active { display: block; }
-.panel h2 { font-size: 17px; font-weight: 500; color: var(--color-text-primary, #111); margin-bottom: 0.4rem; }
-.subtitle { font-size: 12px; color: var(--color-text-secondary, #666); margin-bottom: 1rem; line-height: 1.6; }
-.tree-root { text-align: center; margin-bottom: 1rem; }
-.tree-couple { display: inline-flex; align-items: center; gap: 8px; background: #E1F5EE; border-radius: 12px; padding: 0.5rem 1rem; }
-.tree-couple span { font-size: 13px; font-weight: 500; color: #085041; }
-.branch-line { width: 2px; height: 20px; background: #D3D1C7; margin: 0 auto; }
-.children-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 0.75rem; }
-.child-card { background: var(--color-background-secondary, #f5f5f2); border-radius: 8px; padding: 0.6rem; border: 0.5px solid var(--color-border-tertiary, #e0e0da); }
-.child-card.dec { opacity: 0.6; }
-.child-card h4 { font-size: 11px; font-weight: 500; color: var(--color-text-primary, #111); }
-.child-card .dob { font-size: 10px; color: var(--color-text-secondary, #666); margin-top: 2px; }
-.child-card .kids { font-size: 10px; color: var(--color-text-secondary, #666); margin-top: 2px; }
-.legend { display: flex; gap: 14px; font-size: 11px; color: var(--color-text-secondary, #666); }
-.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
-.tl-list { list-style: none; }
-.tl-item { display: flex; gap: 14px; padding-bottom: 1.1rem; position: relative; }
-.tl-item:not(:last-child)::before { content: ''; position: absolute; left: 17px; top: 28px; width: 2px; height: calc(100% - 8px); background: var(--color-border-tertiary, #e0e0da); }
-.tl-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; flex-shrink: 0; }
-.tl-body h4 { font-size: 13px; font-weight: 500; color: var(--color-text-primary, #111); }
-.tl-body p { font-size: 12px; color: var(--color-text-secondary, #666); line-height: 1.5; margin-top: 2px; }
-.mem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.mem-card { background: var(--color-background-secondary, #f5f5f2); border-radius: 8px; padding: 0.85rem; border-left: 3px solid #1D9E75; }
-.mem-tag { font-size: 10px; font-weight: 500; color: #0F6E56; margin-bottom: 4px; }
-.mem-card p { font-size: 12px; color: var(--color-text-secondary, #666); line-height: 1.5; }
-.games-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.game-card { background: var(--color-background-secondary, #f5f5f2); border-radius: 8px; padding: 0.85rem; border: 0.5px solid var(--color-border-tertiary, #e0e0da); }
-.phase { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-bottom: 5px; }
-.ph-pre { background: #FAEEDA; color: #633806; }
-.ph-day { background: #E1F5EE; color: #085041; }
-.ph-mem { background: #EEEDFE; color: #26215C; }
-.game-card h4 { font-size: 12px; font-weight: 500; color: var(--color-text-primary, #111); margin-bottom: 3px; }
-.game-card p { font-size: 11px; color: var(--color-text-secondary, #666); line-height: 1.4; }
-.ask-list { list-style: none; }
-.ask-item { display: flex; gap: 10px; padding: 0.55rem 0; border-bottom: 0.5px solid var(--color-border-tertiary, #e0e0da); }
-.ask-item:last-child { border: none; }
-.ask-num { background: var(--color-background-secondary, #f5f5f2); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; color: var(--color-text-secondary, #666); flex-shrink: 0; margin-top: 1px; }
-.ask-item p { font-size: 12px; color: var(--color-text-secondary, #666); line-height: 1.5; }
-.sbtn { background: transparent; border: 0.5px solid var(--color-border-secondary, #ccc); border-radius: 8px; padding: 7px 12px; font-size: 12px; cursor: pointer; color: var(--color-text-primary, #111); margin-top: 1rem; display: inline-flex; align-items: center; gap: 5px; font-family: inherit; }
-.sbtn:hover { background: var(--color-background-secondary, #f5f5f2); }
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f5f5f2;
+    --color-text-primary: #111111;
+    --color-text-secondary: #5f5f58;
+    --color-border-tertiary: #e0e0da;
+    --color-border-secondary: #cccccc;
+    --green: #1D9E75;
+    --green-dark: #085041;
+    --green-soft: #E1F5EE;
+    --maxw: 920px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text-primary);
+    background: var(--color-background-primary);
+    line-height: 1.5;
+    padding: 1rem;
+    /* center the whole site on tablet/desktop instead of clinging to the left */
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--color-background-secondary);
+    border: 1px solid var(--color-border-tertiary);
+    border-radius: 16px;
+    padding: 2rem 1.25rem 1.75rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge {
+    background: var(--green-soft); color: var(--green-dark);
+    font-size: 0.75rem; padding: 4px 14px; border-radius: 20px;
+    display: inline-block; margin-bottom: 0.85rem; font-weight: 600;
+  }
+  .hero h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 600; margin-bottom: 0.4rem; line-height: 1.15; }
+  .hero p { font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1.4rem; }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; max-width: 460px; margin: 0 auto;
+  }
+  .stat-card {
+    background: var(--color-background-primary);
+    border: 1px solid var(--color-border-tertiary);
+    border-radius: 10px; padding: 0.85rem 0.5rem;
+  }
+  .stat-num { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 600; }
+  .stat-lbl { font-size: 0.75rem; color: var(--color-text-secondary); margin-top: 2px; }
+
+  /* ---------- Section label ---------- */
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.7rem;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; margin-bottom: 1.5rem;
+  }
+  .nav-card {
+    background: var(--color-background-primary);
+    border: 1px solid var(--color-border-tertiary);
+    border-radius: 14px; padding: 1rem;
+    cursor: pointer; text-align: left;
+    font-family: inherit; color: inherit;
+    width: 100%; min-height: 44px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+  }
+  .nav-card:hover { border-color: var(--green); }
+  .nav-card:active { transform: scale(0.99); }
+  .nav-card:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .nav-card[aria-selected="true"] {
+    border: 2px solid var(--green);
+    box-shadow: 0 1px 6px rgba(29,158,117,0.15);
+  }
+  .nav-icon { font-size: 1.4rem; margin-bottom: 0.4rem; line-height: 1; }
+  .nav-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+  .nav-card p { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.4; }
+
+  /* ---------- Panels ---------- */
+  .panel {
+    display: none;
+    background: var(--color-background-primary);
+    border: 1px solid var(--color-border-tertiary);
+    border-radius: 16px; padding: 1.5rem;
+  }
+  .panel.active { display: block; }
+  .panel h2 { font-size: 1.35rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .subtitle { font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1.25rem; line-height: 1.6; }
+
+  /* ---------- Tree ---------- */
+  .tree-root { text-align: center; margin-bottom: 1rem; }
+  .tree-couple {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-soft); border-radius: 12px; padding: 0.65rem 1.1rem; flex-wrap: wrap; justify-content: center;
+  }
+  .tree-couple span { font-size: 0.95rem; font-weight: 600; color: var(--green-dark); }
+  .branch-line { width: 2px; height: 22px; background: #D3D1C7; margin: 0 auto; }
+  .children-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; margin-bottom: 1rem;
+  }
+  .child-card {
+    background: var(--color-background-secondary);
+    border-radius: 10px; padding: 0.8rem;
+    border: 1px solid var(--color-border-tertiary);
+  }
+  .child-card.dec { opacity: 0.65; }
+  .child-card h4 { font-size: 0.9rem; font-weight: 600; }
+  .child-card .dob { font-size: 0.78rem; color: var(--color-text-secondary); margin-top: 3px; }
+  .child-card .kids { font-size: 0.78rem; color: var(--color-text-secondary); margin-top: 3px; }
+  .legend { display: flex; gap: 18px; font-size: 0.8rem; color: var(--color-text-secondary); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+
+  /* ---------- Timeline ---------- */
+  .tl-list { list-style: none; }
+  .tl-item { display: flex; gap: 14px; padding-bottom: 1.2rem; position: relative; }
+  .tl-item:not(:last-child)::before {
+    content: ''; position: absolute; left: 18px; top: 40px;
+    width: 2px; height: calc(100% - 12px); background: var(--color-border-tertiary);
+  }
+  .tl-dot {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 600; flex-shrink: 0;
+  }
+  .tl-body h4 { font-size: 0.95rem; font-weight: 600; }
+  .tl-body p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.55; margin-top: 3px; }
+
+  /* ---------- Memories ---------- */
+  .mem-grid, .games-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .mem-card {
+    background: var(--color-background-secondary);
+    border-radius: 10px; padding: 1rem;
+    border-left: 4px solid var(--green);
+  }
+  .mem-tag { font-size: 0.72rem; font-weight: 700; color: #0F6E56; margin-bottom: 5px; letter-spacing: 0.03em; }
+  .mem-card p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.55; }
+
+  /* ---------- Games ---------- */
+  .game-card {
+    background: var(--color-background-secondary);
+    border-radius: 10px; padding: 1rem;
+    border: 1px solid var(--color-border-tertiary);
+  }
+  .phase { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 7px; }
+  .ph-pre { background: #FAEEDA; color: #633806; }
+  .ph-day { background: var(--green-soft); color: var(--green-dark); }
+  .ph-mem { background: #EEEDFE; color: #26215C; }
+  .game-card h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; }
+  .game-card p { font-size: 0.85rem; color: var(--color-text-secondary); line-height: 1.45; }
+
+  /* ---------- Ask list ---------- */
+  .ask-list { list-style: none; }
+  .ask-item {
+    display: flex; gap: 12px; padding: 0.7rem 0;
+    border-bottom: 1px solid var(--color-border-tertiary);
+  }
+  .ask-item:last-child { border: none; }
+  .ask-num {
+    background: var(--green-soft); color: var(--green-dark);
+    border-radius: 50%; width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 600; flex-shrink: 0; margin-top: 1px;
+  }
+  .ask-item p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.55; }
+
+  /* ---------- Buttons / CTAs ---------- */
+  .cta {
+    background: var(--green); border: none;
+    border-radius: 10px; padding: 0.8rem 1.2rem;
+    font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    color: #fff; margin-top: 1.25rem;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: inherit; min-height: 44px;
+    text-decoration: none;
+  }
+  .cta:hover { background: #178160; }
+  .cta:focus-visible { outline: 2px solid var(--green-dark); outline-offset: 2px; }
+
+  .soon-note {
+    margin-top: 1.25rem; padding: 0.75rem 1rem;
+    background: var(--color-background-secondary);
+    border: 1px dashed var(--color-border-secondary);
+    border-radius: 10px; font-size: 0.85rem; color: var(--color-text-secondary);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .soon-note strong { color: var(--color-text-primary); font-weight: 600; }
+
+  footer {
+    text-align: center; margin-top: 2rem; padding: 1.5rem 0;
+    font-size: 0.8rem; color: var(--color-text-secondary);
+  }
+
+  /* ---------- Responsive: tablet ---------- */
+  @media (min-width: 640px) {
+    body { padding: 1.5rem; }
+    .nav-grid { grid-template-columns: repeat(3, 1fr); }
+    .children-row { grid-template-columns: repeat(3, 1fr); }
+    .mem-grid, .games-grid { grid-template-columns: repeat(2, 1fr); }
+    .panel { padding: 2rem; }
+    .hero { padding: 2.5rem 2rem; }
+  }
+
+  /* ---------- Responsive: desktop ---------- */
+  @media (min-width: 900px) {
+    .games-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
 </style>
+</head>
+<body>
 
-<h2 class="sr-only">Mary Jack Family Reunion — interactive heritage website preview</h2>
+<h1 class="sr-only">Mary Jack Family Reunion — heritage website</h1>
 
-<div class="hero">
+<header class="hero">
   <div class="hero-badge">Mary Jack Family Heritage</div>
-  <h1>The Jack Family Story</h1>
+  <p class="sr-only">The Jack Family Story</p>
+  <h1 style="margin:0 0 0.4rem;">The Jack Family Story</h1>
   <p>St. Martinsville, Louisiana · Founded 1931 · Reuniting in Houston, TX</p>
   <div class="hero-stats">
     <div class="stat-card"><div class="stat-num">7</div><div class="stat-lbl">Children</div></div>
     <div class="stat-card"><div class="stat-num">30+</div><div class="stat-lbl">Grandchildren</div></div>
-    <div class="stat-card"><div class="stat-num">95<span style="font-size:13px">yr</span></div><div class="stat-lbl">Legacy</div></div>
+    <div class="stat-card"><div class="stat-num">95<span style="font-size:0.9rem">yr</span></div><div class="stat-lbl">Legacy</div></div>
   </div>
-</div>
+</header>
 
-<div class="section-label">Explore your family</div>
-<div class="nav-grid">
-  <div class="nav-card active" onclick="show('heritage',0)">
-    <div class="nav-icon">📍</div>
-    <h3>Our heritage</h3>
-    <p>Broussard to St. Martinsville</p>
+<nav aria-label="Explore the family">
+  <div class="section-label" id="nav-label">Explore your family</div>
+  <div class="nav-grid" role="tablist" aria-labelledby="nav-label">
+    <button class="nav-card" role="tab" aria-selected="true" aria-controls="p-heritage" id="tab-heritage" onclick="show('heritage', this)">
+      <div class="nav-icon" aria-hidden="true">📍</div>
+      <h3>Our heritage</h3>
+      <p>Broussard to St. Martinsville</p>
+    </button>
+    <button class="nav-card" role="tab" aria-selected="false" aria-controls="p-tree" id="tab-tree" onclick="show('tree', this)">
+      <div class="nav-icon" aria-hidden="true">🌳</div>
+      <h3>Family tree</h3>
+      <p>Mary &amp; Willie's children</p>
+    </button>
+    <button class="nav-card" role="tab" aria-selected="false" aria-controls="p-memories" id="tab-memories" onclick="show('memories', this)">
+      <div class="nav-icon" aria-hidden="true">❤️</div>
+      <h3>Memories</h3>
+      <p>Stories &amp; traditions</p>
+    </button>
+    <button class="nav-card" role="tab" aria-selected="false" aria-controls="p-reunion" id="tab-reunion" onclick="show('reunion', this)">
+      <div class="nav-icon" aria-hidden="true">🎉</div>
+      <h3>Reunion plan</h3>
+      <p>Activities &amp; games</p>
+    </button>
+    <button class="nav-card" role="tab" aria-selected="false" aria-controls="p-prework" id="tab-prework" onclick="show('prework', this)">
+      <div class="nav-icon" aria-hidden="true">📚</div>
+      <h3>Pre-reunion</h3>
+      <p>Learn before you go</p>
+    </button>
+    <button class="nav-card" role="tab" aria-selected="false" aria-controls="p-needed" id="tab-needed" onclick="show('needed', this)">
+      <div class="nav-icon" aria-hidden="true">📋</div>
+      <h3>What we need</h3>
+      <p>Info to make it great</p>
+    </button>
   </div>
-  <div class="nav-card" onclick="show('tree',1)">
-    <div class="nav-icon">🌳</div>
-    <h3>Family tree</h3>
-    <p>Mary &amp; Willie's children</p>
-  </div>
-  <div class="nav-card" onclick="show('memories',2)">
-    <div class="nav-icon">❤️</div>
-    <h3>Memories</h3>
-    <p>Stories &amp; traditions</p>
-  </div>
-  <div class="nav-card" onclick="show('reunion',3)">
-    <div class="nav-icon">🎉</div>
-    <h3>Reunion plan</h3>
-    <p>Activities &amp; games</p>
-  </div>
-  <div class="nav-card" onclick="show('prework',4)">
-    <div class="nav-icon">📚</div>
-    <h3>Pre-reunion</h3>
-    <p>Learn before you go</p>
-  </div>
-  <div class="nav-card" onclick="show('needed',5)">
-    <div class="nav-icon">📋</div>
-    <h3>What we need</h3>
-    <p>Info to make it great</p>
-  </div>
-</div>
+</nav>
 
-<div id="p-heritage" class="panel active">
+<main>
+<section id="p-heritage" class="panel active" role="tabpanel" aria-labelledby="tab-heritage" tabindex="0">
   <h2>Our family heritage</h2>
   <p class="subtitle">The Jack story begins in Broussard, Louisiana — and stretches across generations to Houston, Texas.</p>
   <ul class="tl-list">
@@ -126,27 +316,27 @@ body { font-family: var(--font-sans, sans-serif); padding: 0.5rem; }
       <div class="tl-body"><h4>Mary &amp; Willie marry</h4><p>United in Holy Matrimony on April 29, 1931. They settled in St. Martinsville, LA and raised their family working sugarcane and cotton fields together.</p></div>
     </li>
     <li class="tl-item">
-      <div class="tl-dot" style="background:#E1F5EE; color:#085041; font-size:9px;">1931–49</div>
+      <div class="tl-dot" style="background:#E1F5EE; color:#085041; font-size:0.62rem;">1931–49</div>
       <div class="tl-body"><h4>Seven children</h4><p>Vivian, Willis, Mayola, Anita, Sidney, Stella, and Susie — each carrying Mary and Willie's love forward.</p></div>
     </li>
     <li class="tl-item">
-      <div class="tl-dot" style="background:#EEEDFE; color:#26215C; font-size:9px;">Today</div>
+      <div class="tl-dot" style="background:#EEEDFE; color:#26215C; font-size:0.62rem;">Today</div>
       <div class="tl-body"><h4>The family reunites</h4><p>Grandchildren and great-grandchildren keeping the legacy alive — celebrating in Houston, TX where so many of the family settled.</p></div>
     </li>
   </ul>
-</div>
+</section>
 
-<div id="p-tree" class="panel">
+<section id="p-tree" class="panel" role="tabpanel" aria-labelledby="tab-tree" tabindex="0">
   <h2>Family tree</h2>
-  <p class="subtitle">Mary Landry-Jack and Willie Jack's seven children. Click any card to learn more.</p>
+  <p class="subtitle">Mary Landry-Jack and Willie Jack's seven children.</p>
   <div class="tree-root">
     <div class="tree-couple">
       <span>Mary Landry-Jack</span>
-      <span style="color:#D85A30;">♥</span>
+      <span style="color:#D85A30;" aria-hidden="true">♥</span>
       <span>Willie Jack</span>
     </div>
   </div>
-  <div class="branch-line"></div>
+  <div class="branch-line" aria-hidden="true"></div>
   <div class="children-row">
     <div class="child-card dec">
       <h4>Vivian Jack-Charles</h4>
@@ -185,25 +375,25 @@ body { font-family: var(--font-sans, sans-serif); padding: 0.5rem; }
     </div>
   </div>
   <div class="legend">
-    <span><span class="dot" style="background:#1D9E75;"></span> Living</span>
-    <span><span class="dot" style="background:#B4B2A9;"></span> Deceased</span>
+    <span><span class="dot" style="background:#1D9E75;" aria-hidden="true"></span> Living</span>
+    <span><span class="dot" style="background:#B4B2A9;" aria-hidden="true"></span> Deceased</span>
   </div>
-</div>
+</section>
 
-<div id="p-memories" class="panel">
+<section id="p-memories" class="panel" role="tabpanel" aria-labelledby="tab-memories" tabindex="0">
   <h2>Memories &amp; traditions</h2>
   <p class="subtitle">The stories every Jack family member should know by heart.</p>
   <div class="mem-grid">
-    <div class="mem-card"><div class="mem-tag">MARY'S TRADITION</div><p>Every Christmas, Mary mailed boxes of her famous <strong style="color:var(--color-text-primary,#111)">pecan candies</strong> to her children in Houston. A small box, a very big love.</p></div>
+    <div class="mem-card"><div class="mem-tag">MARY'S TRADITION</div><p>Every Christmas, Mary mailed boxes of her famous <strong style="color:var(--color-text-primary)">pecan candies</strong> to her children in Houston. A small box, a very big love.</p></div>
     <div class="mem-card"><div class="mem-tag">WILLIE'S GIFT</div><p>Willie hand-knitted winter caps and scarves for every child and grandchild — a man who showed love through what he made with his own hands.</p></div>
     <div class="mem-card"><div class="mem-tag">HOW THEY MET</div><p>Both born in Broussard, LA — Mary and Willie grew up in the same small town before marrying on April 29, 1931 in Holy Matrimony.</p></div>
     <div class="mem-card"><div class="mem-tag">THE NICKNAME GAME</div><p>Nanoon · Tee-Neg · Da' · Black Gal · Fee · Aunt Vee — every sibling had a nickname. Do <em>you</em> know who's who?</p></div>
     <div class="mem-card"><div class="mem-tag">THE MOVE TO HOUSTON</div><p>Many Jack children settled in Houston, TX — so Mary's Christmas candy boxes had to travel by mail all the way from St. Martinsville.</p></div>
     <div class="mem-card"><div class="mem-tag">MARY'S SPIRIT</div><p>"Everyone she came in contact with throughout her life loved Mary." — from the family heritage document written for the 2005 reunion.</p></div>
   </div>
-</div>
+</section>
 
-<div id="p-reunion" class="panel">
+<section id="p-reunion" class="panel" role="tabpanel" aria-labelledby="tab-reunion" tabindex="0">
   <h2>Reunion plan</h2>
   <p class="subtitle">A phased approach — prework before, fun on the day, keepsakes to take home.</p>
   <div class="games-grid">
@@ -212,42 +402,42 @@ body { font-family: var(--font-sans, sans-serif); padding: 0.5rem; }
     <div class="game-card"><span class="phase ph-day">Day-of</span><h4>Family tree challenge</h4><p>Printed blank tree — first person to fill it correctly wins a prize. Adults and kids compete separately.</p></div>
     <div class="game-card"><span class="phase ph-day">Day-of</span><h4>Mary's pecan candy cook-off</h4><p>Who has the closest recipe? Family votes on the best version — winner gets the "Mary Award."</p></div>
     <div class="game-card"><span class="phase ph-day">Day-of</span><h4>Hula hoop contest</h4><p>A nod to the 2005 reunion photos — kids and adults both compete. A classic Jack family good time.</p></div>
-    <div class="game-card"><span class="phase ph-day">Day-of</span><h4>Whose childhood photo?</h4><p>Display the old school photos from the PDF — guess which sibling is which. High laughs guaranteed.</p></div>
+    <div class="game-card"><span class="phase ph-day">Day-of</span><h4>Whose childhood photo?</h4><p>Display the old school photos — guess which sibling is which. High laughs guaranteed.</p></div>
     <div class="game-card"><span class="phase ph-mem">Keepsake</span><h4>Heritage booklet</h4><p>Printed family tree, heritage story, nicknames &amp; photos — something to take home and keep.</p></div>
     <div class="game-card"><span class="phase ph-mem">Keepsake</span><h4>Memory jar</h4><p>Everyone writes a memory and drops it in. Read aloud at the end of the reunion together.</p></div>
   </div>
-  <button class="sbtn" onclick="sendPrompt('Build a detailed day-of schedule for the Mary Jack Family Reunion — arrival, games, food, tribute moment, and closing. Include timing for each activity.')">Build the full day agenda ↗</button>
-</div>
+  <div class="soon-note"><span aria-hidden="true">🗓️</span> <span><strong>Full day-of agenda coming soon</strong> — arrival, games, food, tribute moment &amp; closing.</span></div>
+</section>
 
-<div id="p-prework" class="panel">
+<section id="p-prework" class="panel" role="tabpanel" aria-labelledby="tab-prework" tabindex="0">
   <h2>Pre-reunion learning</h2>
   <p class="subtitle">Four weeks of family discovery before everyone arrives at the reunion.</p>
   <ul class="tl-list">
     <li class="tl-item">
-      <div class="tl-dot" style="background:#FAEEDA; color:#633806; font-size:9px;">Wk 1</div>
+      <div class="tl-dot" style="background:#FAEEDA; color:#633806; font-size:0.62rem;">Wk 1</div>
       <div class="tl-body"><h4>Read the family heritage story</h4><p>Share "Our Family Heritage" — the full story of Mary and Willie, their lives in Broussard and St. Martinsville, Louisiana.</p></div>
     </li>
     <li class="tl-item">
-      <div class="tl-dot" style="background:#FAEEDA; color:#633806; font-size:9px;">Wk 2</div>
+      <div class="tl-dot" style="background:#FAEEDA; color:#633806; font-size:0.62rem;">Wk 2</div>
       <div class="tl-body"><h4>Complete the nickname quiz</h4><p>Can you match all 6 siblings to their nicknames? Share by group chat — make it a family competition with a small prize.</p></div>
     </li>
     <li class="tl-item">
-      <div class="tl-dot" style="background:#FAEEDA; color:#633806; font-size:9px;">Wk 3</div>
+      <div class="tl-dot" style="background:#FAEEDA; color:#633806; font-size:0.62rem;">Wk 3</div>
       <div class="tl-body"><h4>Submit a memory or photo</h4><p>Each household sends one memory of Mary, Willie, or a past reunion. These get printed as cards for the big day.</p></div>
     </li>
     <li class="tl-item">
-      <div class="tl-dot" style="background:#FAEEDA; color:#633806; font-size:9px;">Wk 4</div>
+      <div class="tl-dot" style="background:#FAEEDA; color:#633806; font-size:0.62rem;">Wk 4</div>
       <div class="tl-body"><h4>Study the family tree</h4><p>Practice filling in Mary &amp; Willie's children and grandchildren. The day-of contest will test everyone!</p></div>
     </li>
   </ul>
-  <button class="sbtn" onclick="sendPrompt('Create a printable family quiz for the Mary Jack reunion — nickname matching, family tree blanks, and trivia about Mary and Willie.')">Generate the printable quiz ↗</button>
-</div>
+  <div class="soon-note"><span aria-hidden="true">📝</span> <span><strong>Printable quiz pack coming soon</strong> — nickname matching, family-tree blanks &amp; trivia.</span></div>
+</section>
 
-<div id="p-needed" class="panel">
+<section id="p-needed" class="panel" role="tabpanel" aria-labelledby="tab-needed" tabindex="0">
   <h2>What we need from you</h2>
   <p class="subtitle">To build the fullest possible heritage website and reunion experience, here's what would help:</p>
   <ul class="ask-list">
-    <li class="ask-item"><div class="ask-num">1</div><p>Anita Jack's full info — her birth year, spouse, children, and nickname are missing from the PDF entirely.</p></li>
+    <li class="ask-item"><div class="ask-num">1</div><p>Anita Jack's full info — her birth year, spouse, children, and nickname are missing entirely.</p></li>
     <li class="ask-item"><div class="ask-num">2</div><p>Grandchildren and great-grandchildren — the tree currently stops at the 7 siblings. We need the next generation.</p></li>
     <li class="ask-item"><div class="ask-num">3</div><p>Reunion date, location, and expected headcount — needed to plan food, activities, and logistics.</p></li>
     <li class="ask-item"><div class="ask-num">4</div><p>More photos — especially of Mary and Willie themselves, and childhood photos of the siblings for the "I Remember When" game.</p></li>
@@ -256,14 +446,38 @@ body { font-family: var(--font-sans, sans-serif); padding: 0.5rem; }
     <li class="ask-item"><div class="ask-num">7</div><p>Budget range — helps right-size the booklet printing, T-shirts, prizes, and catering.</p></li>
     <li class="ask-item"><div class="ask-num">8</div><p>Any audio or video of Mary or Willie — even a short clip. Priceless for a tribute moment at the reunion.</p></li>
   </ul>
-  <button class="sbtn" onclick="sendPrompt('Draft a warm message to send to all Jack family members asking for their info, memories, and photos to help plan the reunion.')">Draft the family outreach message ↗</button>
-</div>
+  <a class="cta" href="mailto:antoniojgage@gmail.com?subject=Jack%20Family%20Reunion%20%E2%80%94%20My%20Info%20%26%20Memories&amp;body=Hi!%20Here's%20what%20I%20can%20share%20for%20the%20family%20reunion%20site%3A%0A%0A-%20Names%2Fdates%3A%0A-%20A%20memory%3A%0A-%20Photos%20(attached)%3A%0A">Send your info &amp; memories ✉️</a>
+</section>
+</main>
+
+<footer>
+  Made with love for the Mary &amp; Willie Jack family · Reuniting in Houston, TX
+</footer>
 
 <script>
-function show(id, idx) {
-  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
-  document.querySelectorAll('.nav-card').forEach(function(c){ c.classList.remove('active'); });
-  document.getElementById('p-'+id).classList.add('active');
-  document.querySelectorAll('.nav-card')[idx].classList.add('active');
-}
+  function show(id, btn) {
+    document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('active'); });
+    document.querySelectorAll('.nav-card').forEach(function (c) { c.setAttribute('aria-selected', 'false'); });
+    document.getElementById('p-' + id).classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    // On small screens, scroll the panel into view so the tap feels responsive
+    if (window.innerWidth < 640) {
+      document.getElementById('p-' + id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Keyboard arrow navigation between tabs (accessibility best practice)
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('keydown', function (e) {
+        var next;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (next) { e.preventDefault(); next.focus(); next.click(); }
+      });
+    });
+  })();
 </script>
+</body>
+</html>
